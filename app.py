@@ -20,14 +20,6 @@ app.secret_key = 'jose'
 # Easily add resources
 api = Api(app)
 
-
-# Creates only the file, data.db
-# Before any request will run this piece of code
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-
 # creates endpoint /auth, we send user_name and pw, client sending jwt will know
 # what user is authenticated
 jwt = JWT(app, authenticate, identity)
